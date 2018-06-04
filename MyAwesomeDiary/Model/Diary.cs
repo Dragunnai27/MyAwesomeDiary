@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace MyAwesomeDiary.Model
 {
     public class Diary
     {
-        [Key]
-        public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int DiaryID { get; set; }
         [ForeignKey("User")]
         [Required]
         public string UserID { get; set; }

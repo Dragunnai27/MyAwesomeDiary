@@ -6,13 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace MyAwesomeDiary.Model
 {
     public class UserTask
     {
-        [Key]
-        public int ID { get; set; }
-        [MaxLength(500)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserTaskID { get; set; }
+        [Required]        
+        public string Name { get; set; }
+        [MaxLength(200, ErrorMessage = "Max length of description is 200")]
         public string TaskDescription { get; set; }
         public bool Active { get; set; }
         [ForeignKey("User")]
@@ -21,9 +23,9 @@ namespace Model
         [ForeignKey("TaskState")]
         public int TaskStateID { get; set; }
         public TaskState TaskState { get; set; }
-        [ForeignKey("EventPriority")]
-        public int PID { get; set; }
-        public EventPriority EventPriority { get; set; }
+        [ForeignKey("TaskPriority")]
+        public int PriorityID { get; set; }
+        public EventPriority TaskPriority { get; set; }
 
         
     }

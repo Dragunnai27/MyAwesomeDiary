@@ -6,22 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace MyAwesomeDiary.Model
 {
     public class Nation
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NationID { get; set; }
         [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
     }
 
     public class SpecialDay
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int SpecialDayID { get; set; }
         [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
+        [MaxLength(100)]
+        public string Description { get; set; }
     }
 
     public class NationalDay
@@ -37,7 +41,7 @@ namespace Model
         [Column(Order = 1)]
         public int SpecialDayID { get; set; }
         public SpecialDay SpecialDay { get; set; }
-        public DateTime Start { get; set; }
+        public DateTime Date { get; set; }
         
     }
 }

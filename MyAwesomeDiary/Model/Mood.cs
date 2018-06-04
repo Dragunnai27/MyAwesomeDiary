@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace MyAwesomeDiary.Model
 {
     public class Mood
     {
@@ -17,17 +17,14 @@ namespace Model
     }
     public class UserMood
     {
-        [ForeignKey("User")]
-        [Key]
-        [Column(Order = 0)]
+        public int UserMoodID { get; set; }
+        [ForeignKey("User")]        
         public string UserID { get; set; }
         public User User { get; set; }
         [ForeignKey("Mood")]
-        [Key]
-        [Column(Order = 1)]
-        public int MID { get; set; }
+        public int MoodID { get; set; }
         public Mood Mood { get; set; }
-        public DateTime Start { get; set; }
+        public DateTime Date { get; set; }
        
     }
 }
